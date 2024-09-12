@@ -20,7 +20,7 @@ while True:
                 while True:
                     serial_number = input("Enter a Serial Number: ")
                     if serial_number in students:
-                        print("Serial Number already exists. Please try again.")
+                        print("Serial Number already exists. Please try again.")  
                         continue
                     first_name = input("Enter a First Name: ")
                     if not first_name.isalpha():
@@ -138,8 +138,5 @@ while True:
             more = input("Faculty wants to perform any other operations? (y/n): ")
             if more.lower() != 'y':
                 break
-
-    # elif role == '3':
-    #     print("Student functionality is not implemented in this example.")
-    else:
-        print("Invalid role id. Please try again.")
+            else:
+                  print("Invalid role id. Please try again.")
