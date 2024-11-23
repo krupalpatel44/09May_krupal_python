@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/static/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/static/img/favicon.png">
+
+  <title>Tirth Residency-Event</title>
+
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+
+  <!-- Nucleo Icons -->
+  <link href="/static/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/static/css/nucleo-svg.css" rel="stylesheet" />
+  <!--end::Third Party Plugin(Bootstrap Icons)-->
+  <!--begin::Required Plugin(AdminLTE)-->
+  <link rel="stylesheet" href="/static/css/event/adminlte.css" />
+  <link rel="stylesheet" href="/static/css/event/adminlte.min.css" />
+  <link rel="stylesheet" href="/static/css/event/adminlte.rtl.css" />
+  <link rel="stylesheet" href="/static/css/event/adminlte.rtl.min.css" />
+  <link rel="stylesheet" href="/static/nwstatic/calender/style.css" />
+  <!--end::Required Plugin(AdminLTE)-->
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link id="pagestyle" href="/static/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+
+  <!-- Nepcha Analytics (nepcha.com) -->
+  <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+  <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+</head>
+
+<body class="g-sidenav-show  bg-gray-100">
+  <aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
+    id="sidenav-main">
+
+    <div class="sidenav-header">
+      <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        aria-hidden="true" id="iconSidenav"></i>
+      <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
+        target="_blank">
+        <img style="height:1000px;width:50px;" src="/static/img/slogo.png" alt="main_logo">
+        <span class="ms-1 font-weight-bold text-white">Tirth Recidency</span>
+      </a>
+    </div>
+    <hr class="horizontal light mt-0 mb-2">
+
+    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/index">
+
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">dashboard</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/smember">
+            <span class="nav-link-text ms-1"><i style="font-size: large;" class="bi bi-person-add me-3"></i>Society
+              Member</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/swatchman">
+            <span class="nav-link-text ms-1"><i style="font-size: large;" class="bi bi-person-add me-3"></i>Society
+              Watchman</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/notice">
+            <span class="nav-link-text ms-1"><i style="font-size: large;"
+                class="bi bi-person-add me-3"></i>Notice</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link text-white " href="/event">
+            <span class="nav-link-text ms-1"><i style="font-size: large;" class="bi bi-person-add me-3"></i>Event</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </aside>
+  <div class="container" style="position: absolute; left: 320px;">
+    <!--begin::App Main-->
+    <main class="app-main">
+      <!--begin::App Content Header-->
+      <div class="app-content-header">
+        <!--begin::Container-->
+        <div class="container-fluid">
+          <!--begin::Row-->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3 class="mb-5" style="margin-top: 50px;">Event</h3>
+            </div>
+            <div>
+              <table style="width: 100%; border-collapse: collapse">
+                <tr style="
+                  border-bottom: 2px solid rgb(230, 230, 230);
+                  height: 50px;
+                ">
+                  <th>Image</th>
+                  <th>Title</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                </tr>
+                {% for i in events %}
+                <tr style="
+                  border-bottom: 2px solid rgb(230, 230, 230);
+                  height: 80px;
+                ">
+                  <td>
+                    <img src="{{i.event_img.url}}" width="50px" height="50px" alt="" />
+                  </td>
+                  <td>{{i.event_title}}</td>
+                  <td>{{i.start_date}}</td>
+                  <td>{{i.end_date}}</td>
+                  <td>{{i.start_time}}</td>
+                  <td>{{i.end_time}}</td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+          <!--end::Row-->
+        </div>
+        <!--end::Container-->
+      </div>
+      <!--end::App Content Header-->
+      <!--begin::App Content-->
+
+      <!--end::App Content-->
+    </main>
+    <!--end::App Main-->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js"
+    integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script>
+  <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
+  <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
+  <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
+  <script src="/static/index/js/adminlte.js"></script>
+  <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
+  <script>
+    const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
+    const Default = {
+      scrollbarTheme: "os-theme-light",
+      scrollbarAutoHide: "leave",
+      scrollbarClickScroll: true,
+    };
+    document.addEventListener("DOMContentLoaded", function () {
+      const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
+      if (
+        sidebarWrapper &&
+        typeof OverlayScrollbarsGlobal?.OverlayScrollbars !== "undefined"
+      ) {
+        OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
+          scrollbars: {
+            theme: Default.scrollbarTheme,
+            autoHide: Default.scrollbarAutoHide,
+            clickScroll: Default.scrollbarClickScroll,
+          },
+        });
+      }
+    });
+  </script>
+  <!--end::OverlayScrollbars Configure-->
+  <!-- OPTIONAL SCRIPTS -->
+  <!-- sortablejs -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
+    integrity="sha256-ipiJrswvAR4VAx/th+6zWsdeYmVae0iJuiR+6OqHJHQ=" crossorigin="anonymous"></script>
+  <!-- sortablejs -->
+  <script>
+    const connectedSortables =
+      document.querySelectorAll(".connectedSortable");
+    connectedSortables.forEach((connectedSortable) => {
+      let sortable = new Sortable(connectedSortable, {
+        group: "shared",
+        handle: ".card-header",
+      });
+    });
+
+    const cardHeaders = document.querySelectorAll(
+      ".connectedSortable .card-header"
+    );
+    cardHeaders.forEach((cardHeader) => {
+      cardHeader.style.cursor = "move";
+    });
+  </script>
+  <!-- apexcharts -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
+    integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8=" crossorigin="anonymous"></script>
+  <!-- ChartJS -->
+  <script>
+    // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
+    // IT'S ALL JUST JUNK FOR DEMO
+    // ++++++++++++++++++++++++++++++++++++++++++
+
+    const sales_chart_options = {
+      series: [
+        {
+          name: "Digital Goods",
+          data: [28, 48, 40, 19, 86, 27, 90],
+        },
+        {
+          name: "Electronics",
+          data: [65, 59, 80, 81, 56, 55, 40],
+        },
+      ],
+      chart: {
+        height: 300,
+        type: "area",
+        toolbar: {
+          show: false,
+        },
+      },
+      legend: {
+        show: false,
+      },
+      colors: ["#0d6efd", "#20c997"],
+      dataLabels: {
+        enabled: false,
+      },
+      stroke: {
+        curve: "smooth",
+      },
+      xaxis: {
+        type: "datetime",
+        categories: [
+          "2023-01-01",
+          "2023-02-01",
+          "2023-03-01",
+          "2023-04-01",
+          "2023-05-01",
+          "2023-06-01",
+          "2023-07-01",
+        ],
+      },
+      tooltip: {
+        x: {
+          format: "MMMM yyyy",
+        },
+      },
+    };
+
+    const sales_chart = new ApexCharts(
+      document.querySelector("#revenue-chart"),
+      sales_chart_options
+    );
+    sales_chart.render();
+  </script>
+  <!-- jsvectormap -->
+  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"
+    integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js"
+    integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY=" crossorigin="anonymous"></script>
+  <!-- jsvectormap -->
+  <script>
+    const visitorsData = {
+      US: 398, // USA
+      SA: 400, // Saudi Arabia
+      CA: 1000, // Canada
+      DE: 500, // Germany
+      FR: 760, // France
+      CN: 300, // China
+      AU: 700, // Australia
+      BR: 600, // Brazil
+      IN: 800, // India
+      GB: 320, // Great Britain
+      RU: 3000, // Russia
+    };
+
+    // World map by jsVectorMap
+    const map = new jsVectorMap({
+      selector: "#world-map",
+      map: "world",
+    });
+
+    // Sparkline charts
+    const option_sparkline1 = {
+      series: [
+        {
+          data: [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021],
+        },
+      ],
+      chart: {
+        type: "area",
+        height: 50,
+        sparkline: {
+          enabled: true,
+        },
+      },
+      stroke: {
+        curve: "straight",
+      },
+      fill: {
+        opacity: 0.3,
+      },
+      yaxis: {
+        min: 0,
+      },
+      colors: ["#DCE6EC"],
+    };
+
+    const sparkline1 = new ApexCharts(
+      document.querySelector("#sparkline-1"),
+      option_sparkline1
+    );
+    sparkline1.render();
+
+    const option_sparkline2 = {
+      series: [
+        {
+          data: [515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921],
+        },
+      ],
+      chart: {
+        type: "area",
+        height: 50,
+        sparkline: {
+          enabled: true,
+        },
+      },
+      stroke: {
+        curve: "straight",
+      },
+      fill: {
+        opacity: 0.3,
+      },
+      yaxis: {
+        min: 0,
+      },
+      colors: ["#DCE6EC"],
+    };
+
+    const sparkline2 = new ApexCharts(
+      document.querySelector("#sparkline-2"),
+      option_sparkline2
+    );
+    sparkline2.render();
+
+    const option_sparkline3 = {
+      series: [
+        {
+          data: [15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21],
+        },
+      ],
+      chart: {
+        type: "area",
+        height: 50,
+        sparkline: {
+          enabled: true,
+        },
+      },
+      stroke: {
+        curve: "straight",
+      },
+      fill: {
+        opacity: 0.3,
+      },
+      yaxis: {
+        min: 0,
+      },
+      colors: ["#DCE6EC"],
+    };
+
+    const sparkline3 = new ApexCharts(
+      document.querySelector("#sparkline-3"),
+      option_sparkline3
+    );
+    sparkline3.render();
+  </script>
+  <!--end::Script-->
+  <!-- Calanderjs start -->
+  <script>
+    !(function () {
+      var today = moment();
+
+      function Calendar(selector, events) {
+        this.el = document.querySelector(selector);
+        this.events = events;
+        this.current = moment().date(1);
+        this.draw();
+        var current = document.querySelector(".today");
+        if (current) {
+          var self = this;
+          window.setTimeout(function () {
+            self.openDay(current);
+          }, 500);
+        }
+      }
+
+      Calendar.prototype.draw = function () {
+        //Create Header
+        this.drawHeader();
+
+        //Draw Month
+        this.drawMonth();
+
+        this.drawLegend();
+      };
+
+      Calendar.prototype.drawHeader = function () {
+        var self = this;
+        if (!this.header) {
+          //Create the header elements
+          this.header = createElement("div", "header");
+          this.header.className = "header";
+
+          this.title = createElement("h1");
+
+          var right = createElement("div", "right");
+          right.addEventListener("click", function () {
+            self.nextMonth();
+          });
+
+          var left = createElement("div", "left");
+          left.addEventListener("click", function () {
+            self.prevMonth();
+          });
+
+          //Append the Elements
+          this.header.appendChild(this.title);
+          this.header.appendChild(right);
+          this.header.appendChild(left);
+          this.el.appendChild(this.header);
+        }
+
+        this.title.innerHTML = this.current.format("MMMM YYYY");
+      };
+
+      Calendar.prototype.drawMonth = function () {
+        var self = this;
+
+        this.events.forEach(function (ev) {
+          ev.date = self.current.clone().date(Math.random() * (29 - 1) + 1);
+        });
+
+        if (this.month) {
+          this.oldMonth = this.month;
+          this.oldMonth.className =
+            "month out " + (self.next ? "next" : "prev");
+          this.oldMonth.addEventListener("webkitAnimationEnd", function () {
+            self.oldMonth.parentNode.removeChild(self.oldMonth);
+            self.month = createElement("div", "month");
+            self.backFill();
+            self.currentMonth();
+            self.fowardFill();
+            self.el.appendChild(self.month);
+            window.setTimeout(function () {
+              self.month.className =
+                "month in " + (self.next ? "next" : "prev");
+            }, 16);
+          });
+        } else {
+          this.month = createElement("div", "month");
+          this.el.appendChild(this.month);
+          this.backFill();
+          this.currentMonth();
+          this.fowardFill();
+          this.month.className = "month new";
+        }
+      };
+
+      Calendar.prototype.backFill = function () {
+        var clone = this.current.clone();
+        var dayOfWeek = clone.day();
+
+        if (!dayOfWeek) {
+          return;
+        }
+
+        clone.subtract("days", dayOfWeek + 1);
+
+        for (var i = dayOfWeek; i > 0; i--) {
+          this.drawDay(clone.add("days", 1));
+        }
+      };
+
+      Calendar.prototype.fowardFill = function () {
+        var clone = this.current.clone().add("months", 1).subtract("days", 1);
+        var dayOfWeek = clone.day();
+
+        if (dayOfWeek === 6) {
+          return;
+        }
+
+        for (var i = dayOfWeek; i < 6; i++) {
+          this.drawDay(clone.add("days", 1));
+        }
+      };
+
+      Calendar.prototype.currentMonth = function () {
+        var clone = this.current.clone();
+
+        while (clone.month() === this.current.month()) {
+          this.drawDay(clone);
+          clone.add("days", 1);
+        }
+      };
+
+      Calendar.prototype.getWeek = function (day) {
+        if (!this.week || day.day() === 0) {
+          this.week = createElement("div", "week");
+          this.month.appendChild(this.week);
+        }
+      };
+
+      Calendar.prototype.drawDay = function (day) {
+        var self = this;
+        this.getWeek(day);
+
+        //Outer Day
+        var outer = createElement("div", this.getDayClass(day));
+        outer.addEventListener("click", function () {
+          self.openDay(this);
+        });
+
+        //Day Name
+        var name = createElement("div", "day-name", day.format("ddd"));
+
+        //Day Number
+        var number = createElement("div", "day-number", day.format("DD"));
+
+        //Events
+        var events = createElement("div", "day-events");
+        this.drawEvents(day, events);
+
+        outer.appendChild(name);
+        outer.appendChild(number);
+        outer.appendChild(events);
+        this.week.appendChild(outer);
+      };
+
+      Calendar.prototype.drawEvents = function (day, element) {
+        if (day.month() === this.current.month()) {
+          var todaysEvents = this.events.reduce(function (memo, ev) {
+            if (ev.date.isSame(day, "day")) {
+              memo.push(ev);
+            }
+            return memo;
+          }, []);
+
+          todaysEvents.forEach(function (ev) {
+            var evSpan = createElement("span", ev.color);
+            element.appendChild(evSpan);
+          });
+        }
+      };
+
+      Calendar.prototype.getDayClass = function (day) {
+        classes = ["day"];
+        if (day.month() !== this.current.month()) {
+          classes.push("other");
+        } else if (today.isSame(day, "day")) {
+          classes.push("today");
+        }
+        return classes.join(" ");
+      };
+
+      Calendar.prototype.openDay = function (el) {
+        var details, arrow;
+        var dayNumber =
+          +el.querySelectorAll(".day-number")[0].innerText ||
+          +el.querySelectorAll(".day-number")[0].textContent;
+        var day = this.current.clone().date(dayNumber);
+
+        var currentOpened = document.querySelector(".details");
+
+        //Check to see if there is an open detais box on the current row
+        if (currentOpened && currentOpened.parentNode === el.parentNode) {
+          details = currentOpened;
+          arrow = document.querySelector(".arrow");
+        } else {
+          //Close the open events on differnt week row
+          //currentOpened && currentOpened.parentNode.removeChild(currentOpened);
+          if (currentOpened) {
+            currentOpened.addEventListener("webkitAnimationEnd", function () {
+              currentOpened.parentNode.removeChild(currentOpened);
+            });
+            currentOpened.addEventListener("oanimationend", function () {
+              currentOpened.parentNode.removeChild(currentOpened);
+            });
+            currentOpened.addEventListener("msAnimationEnd", function () {
+              currentOpened.parentNode.removeChild(currentOpened);
+            });
+            currentOpened.addEventListener("animationend", function () {
+              currentOpened.parentNode.removeChild(currentOpened);
+            });
+            currentOpened.className = "details out";
+          }
+
+          //Create the Details Container
+          details = createElement("div", "details in");
+
+          //Create the arrow
+          var arrow = createElement("div", "arrow");
+
+          //Create the event wrapper
+
+          details.appendChild(arrow);
+          el.parentNode.appendChild(details);
+        }
+
+        var todaysEvents = this.events.reduce(function (memo, ev) {
+          if (ev.date.isSame(day, "day")) {
+            memo.push(ev);
+          }
+          return memo;
+        }, []);
+
+        this.renderEvents(todaysEvents, details);
+
+        arrow.style.left =
+          el.offsetLeft - el.parentNode.offsetLeft + 27 + "px";
+      };
+
+      Calendar.prototype.renderEvents = function (events, ele) {
+        //Remove any events in the current details element
+        var currentWrapper = ele.querySelector(".events");
+        var wrapper = createElement(
+          "div",
+          "events in" + (currentWrapper ? " new" : "")
+        );
+
+        events.forEach(function (ev) {
+          var div = createElement("div", "event");
+          var square = createElement("div", "event-category " + ev.color);
+          var span = createElement("span", "", ev.eventName);
+
+          div.appendChild(square);
+          div.appendChild(span);
+          wrapper.appendChild(div);
+        });
+
+        if (!events.length) {
+          var div = createElement("div", "event empty");
+          var span = createElement("span", "", "No Events");
+
+          div.appendChild(span);
+          wrapper.appendChild(div);
+        }
+
+        if (currentWrapper) {
+          currentWrapper.className = "events out";
+          currentWrapper.addEventListener("webkitAnimationEnd", function () {
+            currentWrapper.parentNode.removeChild(currentWrapper);
+            ele.appendChild(wrapper);
+          });
+          currentWrapper.addEventListener("oanimationend", function () {
+            currentWrapper.parentNode.removeChild(currentWrapper);
+            ele.appendChild(wrapper);
+          });
+          currentWrapper.addEventListener("msAnimationEnd", function () {
+            currentWrapper.parentNode.removeChild(currentWrapper);
+            ele.appendChild(wrapper);
+          });
+          currentWrapper.addEventListener("animationend", function () {
+            currentWrapper.parentNode.removeChild(currentWrapper);
+            ele.appendChild(wrapper);
+          });
+        } else {
+          ele.appendChild(wrapper);
+        }
+      };
+
+      Calendar.prototype.drawLegend = function () {
+        var legend = createElement("div", "legend");
+        var calendars = this.events
+          .map(function (e) {
+            return e.calendar + "|" + e.color;
+          })
+          .reduce(function (memo, e) {
+            if (memo.indexOf(e) === -1) {
+              memo.push(e);
+            }
+            return memo;
+          }, [])
+          .forEach(function (e) {
+            var parts = e.split("|");
+            var entry = createElement("span", "entry " + parts[1], parts[0]);
+            legend.appendChild(entry);
+          });
+        this.el.appendChild(legend);
+      };
+
+      Calendar.prototype.nextMonth = function () {
+        this.current.add("months", 1);
+        this.next = true;
+        this.draw();
+      };
+
+      Calendar.prototype.prevMonth = function () {
+        this.current.subtract("months", 1);
+        this.next = false;
+        this.draw();
+      };
+
+      window.Calendar = Calendar;
+
+      function createElement(tagName, className, innerText) {
+        var ele = document.createElement(tagName);
+        if (className) {
+          ele.className = className;
+        }
+        if (innerText) {
+          ele.innderText = ele.textContent = innerText;
+        }
+        return ele;
+      }
+    })();
+
+    !(function () {
+      var data = [
+        {
+          eventName: "Lunch Meeting w/ Mark",
+          calendar: "Work",
+          color: "orange",
+        },
+        {
+          eventName: "Interview - Jr. Web Developer",
+          calendar: "Work",
+          color: "orange",
+        },
+        {
+          eventName: "Demo New App to the Board",
+          calendar: "Work",
+          color: "orange",
+        },
+        {
+          eventName: "Dinner w/ Marketing",
+          calendar: "Work",
+          color: "orange",
+        },
+
+        { eventName: "Game vs Portalnd", calendar: "Sports", color: "blue" },
+        { eventName: "Game vs Houston", calendar: "Sports", color: "blue" },
+        { eventName: "Game vs Denver", calendar: "Sports", color: "blue" },
+        { eventName: "Game vs San Degio", calendar: "Sports", color: "blue" },
+
+        { eventName: "School Play", calendar: "Kids", color: "yellow" },
+        {
+          eventName: "Parent/Teacher Conference",
+          calendar: "Kids",
+          color: "yellow",
+        },
+        {
+          eventName: "Pick up from Soccer Practice",
+          calendar: "Kids",
+          color: "yellow",
+        },
+        { eventName: "Ice Cream Night", calendar: "Kids", color: "yellow" },
+
+        { eventName: "Free Tamale Night", calendar: "Other", color: "green" },
+        { eventName: "Bowling Team", calendar: "Other", color: "green" },
+        {
+          eventName: "Teach Kids to Code",
+          calendar: "Other",
+          color: "green",
+        },
+        { eventName: "Startup Weekend", calendar: "Other", color: "green" },
+      ];
+
+      function addDate(ev) { }
+
+      var calendar = new Calendar("#calendar", data);
+    })();
+  </script>
+  <!-- Calanderjs end -->
+</body>
+
+</html>
